@@ -23,6 +23,20 @@ http://localhost/SLIDER/
 
 The demo currently defaults to the `cubeover` animation.
 
+If you publish the repo with GitHub Pages, the demo URL will typically be:
+
+```text
+https://phploaded.github.io/sliderX/
+```
+
+To enable it on GitHub:
+
+1. Open the repository settings.
+2. Go to `Pages`.
+3. Select `Deploy from a branch`.
+4. Choose branch `main` and folder `/ (root)`.
+5. Save the setting and wait for GitHub to publish the site.
+
 ## Quick Start
 
 1. Serve the project root from a local web server.
@@ -108,4 +122,3 @@ The demo currently defaults to the `cubeover` animation.
 - `data-bg` should contain a valid CSS `background-image` value.
 - The demo slide images are named `01.jpg` through `05.jpg`.
 - The asset loader only includes the animations listed in `window.sliderXAssetConfig`.
-

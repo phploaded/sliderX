@@ -1,0 +1,12 @@
+.sliderx[data-animation="instant"] .sliderx__bg-base {
+  display: block;
+}
+
+.sliderx[data-animation="instant"] .sliderx__bg-track {
+  display: none;
+}
+
+.sliderx[data-animation="instant"] .sliderx__content-stage {
+  display: block;
+  transform: none;
+}

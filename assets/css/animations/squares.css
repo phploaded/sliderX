@@ -1,0 +1,130 @@
+.sliderx .sliderx__squares-stage {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.sliderx[data-animation="squares"] .sliderx__bg-base {
+  display: none;
+}
+
+.sliderx[data-animation="squares"] .sliderx__bg-track,
+.sliderx[data-animation="squares"] .sliderx__content-stage {
+  display: block;
+}
+
+.sliderx[data-animation="squares"] .sliderx__bg-track > .sliderx__bg-panel {
+  position: absolute;
+  inset: 0;
+  background-image: var(--sliderx-panel-image, var(--sliderx-panel-bg));
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.sliderx[data-animation="squares"] .sliderx__bg-track > .sliderx__bg-panel.is-active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.sliderx[data-animation="squares"] .sliderx__content-stage > .sliderx__slide {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.sliderx[data-animation="squares"] .sliderx__content-stage > .sliderx__slide.is-active,
+.sliderx[data-animation="squares"] .sliderx__content-stage > .sliderx__slide.is-entering,
+.sliderx[data-animation="squares"] .sliderx__content-stage > .sliderx__slide.is-leaving {
+  visibility: visible;
+}
+
+.sliderx[data-animation="squares"] .sliderx__content-stage > .sliderx__slide.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.sliderx[data-animation="squares"] .sliderx__squares-stage {
+  position: absolute;
+  inset: 0;
+  display: block;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.sliderx[data-animation="squares"].is-animating .sliderx__squares-stage {
+  visibility: visible;
+  opacity: 1;
+}
+
+.sliderx[data-animation="squares"] .sliderx__square {
+  position: absolute;
+  overflow: hidden;
+  opacity: 0;
+  transform: scale3d(0.96, 0.96, 1);
+  will-change: opacity, transform;
+}
+
+.sliderx[data-animation="squares"] .sliderx__square-pane {
+  position: absolute;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.sliderx[data-animation="squares"] .sliderx__content-stage > .sliderx__slide.is-leaving {
+  z-index: 1;
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+  pointer-events: none;
+}
+
+.sliderx[data-animation="squares"] .sliderx__content-stage > .sliderx__slide.is-entering {
+  z-index: 2;
+  opacity: 0;
+  transform: translate3d(0, 1rem, 0) scale3d(0.98, 0.98, 1);
+  pointer-events: none;
+}
+
+.sliderx[data-animation="squares"] .sliderx__content-stage > .sliderx__slide.is-entering *,
+.sliderx[data-animation="squares"] .sliderx__content-stage > .sliderx__slide.is-leaving * {
+  pointer-events: none;
+}
+
+.sliderx[data-animation="squares"].is-animating .sliderx__bg-track > .sliderx__bg-panel {
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+.sliderx[data-animation="squares"].is-animating .sliderx__bg-track > .sliderx__bg-panel.is-leaving {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.sliderx[data-animation="squares"].is-animating .sliderx__square {
+  transition:
+    opacity calc(var(--sliderx-animation-duration) * 0.3) ease var(--sliderx-square-delay, 0ms),
+    transform calc(var(--sliderx-animation-duration) * 0.3) ease var(--sliderx-square-delay, 0ms);
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+}
+
+.sliderx[data-animation="squares"].is-animating .sliderx__content-stage > .sliderx__slide.is-leaving {
+  transition:
+    opacity calc(var(--sliderx-animation-duration) * 0.22) cubic-bezier(0.55, 0.055, 0.675, 0.19),
+    transform calc(var(--sliderx-animation-duration) * 0.22) cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  opacity: 0;
+  transform: translate3d(-0.75rem, -1rem, 0) scale3d(0.96, 0.96, 1);
+}
+
+.sliderx[data-animation="squares"].is-animating .sliderx__content-stage > .sliderx__slide.is-entering {
+  transition:
+    opacity calc(var(--sliderx-animation-duration) * 0.24) ease calc(var(--sliderx-animation-duration) * 0.32),
+    transform calc(var(--sliderx-animation-duration) * 0.24) ease calc(var(--sliderx-animation-duration) * 0.32);
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+}

@@ -1,0 +1,96 @@
+.sliderx .sliderx__slices-stage {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.sliderx[data-animation="slices"] .sliderx__bg-base {
+  display: none;
+}
+
+.sliderx[data-animation="slices"] .sliderx__bg-track,
+.sliderx[data-animation="slices"] .sliderx__content-stage {
+  display: block;
+}
+
+.sliderx[data-animation="slices"] .sliderx__bg-track > .sliderx__bg-panel {
+  position: absolute;
+  inset: 0;
+  background-image: var(--sliderx-panel-image, var(--sliderx-panel-bg));
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.sliderx[data-animation="slices"] .sliderx__bg-track > .sliderx__bg-panel,
+.sliderx[data-animation="slices"] .sliderx__content-stage > .sliderx__slide {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.sliderx[data-animation="slices"] .sliderx__bg-track > .sliderx__bg-panel.is-active,
+.sliderx[data-animation="slices"] .sliderx__content-stage > .sliderx__slide.is-active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.sliderx[data-animation="slices"].is-animating .sliderx__content-stage > .sliderx__slide {
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+.sliderx[data-animation="slices"] .sliderx__slices-stage {
+  position: absolute;
+  inset: 0;
+  display: block;
+  z-index: 3;
+  overflow: hidden;
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.sliderx[data-animation="slices"].is-animating .sliderx__slices-stage {
+  visibility: visible;
+  opacity: 1;
+}
+
+.sliderx[data-animation="slices"] .sliderx__slice {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: var(--sliderx-slice-start-transform, translate3d(0, -100%, 0));
+  transform-origin: var(--sliderx-slice-origin, 50% 50%);
+  will-change: transform, opacity;
+}
+
+.sliderx[data-animation="slices"] .sliderx__slice-pane {
+  position: absolute;
+  top: 0;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.sliderx[data-animation="slices"] .sliderx__slice-pane > .sliderx__slide {
+  position: absolute;
+  inset: 0;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: none;
+  background: none;
+}
+
+.sliderx[data-animation="slices"] .sliderx__slice-pane > .sliderx__slide * {
+  pointer-events: none;
+}
+
+.sliderx[data-animation="slices"].is-animating .sliderx__slice {
+  transition:
+    transform calc(var(--sliderx-animation-duration) * 0.55) cubic-bezier(0.22, 0.61, 0.36, 1) var(--sliderx-slice-delay, 0ms),
+    opacity calc(var(--sliderx-animation-duration) * 0.55) cubic-bezier(0.22, 0.61, 0.36, 1) var(--sliderx-slice-delay, 0ms);
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+}

@@ -1,0 +1,263 @@
+.sliderx .sliderx__album-stage {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.sliderx[data-animation="album"] .sliderx__bg-base {
+  display: none;
+}
+
+.sliderx[data-animation="album"] .sliderx__viewport {
+  perspective: var(--sliderx-album-perspective, 2600px);
+  perspective-origin: 50% 50%;
+  overflow: visible;
+  transform-style: preserve-3d;
+}
+
+.sliderx[data-animation="album"] .sliderx__bg-track,
+.sliderx[data-animation="album"] .sliderx__content-stage {
+  display: block;
+}
+
+.sliderx[data-animation="album"] .sliderx__content-stage {
+  overflow: hidden;
+}
+
+.sliderx[data-animation="album"] .sliderx__bg-track > .sliderx__bg-panel {
+  position: absolute;
+  inset: 0;
+  visibility: hidden;
+  opacity: 0;
+  background-image: var(--sliderx-panel-image, var(--sliderx-panel-bg));
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.sliderx[data-animation="album"] .sliderx__bg-track > .sliderx__bg-panel.is-active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.sliderx[data-animation="album"] .sliderx__album-stage {
+  position: absolute;
+  inset: 0;
+  display: block;
+  z-index: 3;
+  overflow: visible;
+  pointer-events: none;
+  transform-style: preserve-3d;
+}
+
+.sliderx[data-animation="album"].is-animating .sliderx__album-stage {
+  visibility: visible;
+  opacity: 1;
+}
+
+.sliderx[data-animation="album"] .sliderx__album-static-current,
+.sliderx[data-animation="album"] .sliderx__album-static-target,
+.sliderx[data-animation="album"] .sliderx__album-leaf {
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  background-repeat: no-repeat;
+  background-size: 200% 100%;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.sliderx[data-animation="album"] .sliderx__album-static-current,
+.sliderx[data-animation="album"] .sliderx__album-static-target {
+  width: 50%;
+  transition:
+    opacity calc(var(--sliderx-animation-duration) * 0.5) ease,
+    filter calc(var(--sliderx-animation-duration) * 0.5) ease;
+}
+
+.sliderx[data-animation="album"] .sliderx__album-static-current {
+  z-index: 2;
+  opacity: 1;
+  filter: brightness(1);
+}
+
+.sliderx[data-animation="album"] .sliderx__album-static-target {
+  z-index: 1;
+  opacity: 0.34;
+  filter: brightness(0.72);
+}
+
+.sliderx[data-animation="album"] .sliderx__album-leaf {
+  z-index: 4;
+  width: calc(50% + 14px);
+  opacity: 1;
+  will-change: transform, opacity;
+  transition:
+    transform calc(var(--sliderx-animation-duration) * 0.5) cubic-bezier(0.32, 0.02, 0.16, 1),
+    opacity calc(var(--sliderx-animation-duration) * 0.16) ease;
+}
+
+.sliderx[data-animation="album"] .sliderx__album-leaf.is-incoming {
+  opacity: 0;
+}
+
+.sliderx[data-animation="album"] .sliderx__album-spine {
+  position: absolute;
+  top: -6px;
+  bottom: -6px;
+  left: 50%;
+  z-index: 5;
+  width: 1px;
+  transform: translateX(-50%);
+  opacity: 0.42;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.26), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.26));
+}
+
+.sliderx[data-animation="album"][data-album-side="right"] .sliderx__album-static-current {
+  left: 0;
+  background-position: left center;
+}
+
+.sliderx[data-animation="album"][data-album-side="right"] .sliderx__album-static-target {
+  left: 50%;
+  background-position: right center;
+}
+
+.sliderx[data-animation="album"][data-album-side="right"] .sliderx__album-leaf.is-outgoing {
+  left: 50%;
+  background-position: right center;
+  transform-origin: left center;
+  transform: rotateY(0deg);
+}
+
+.sliderx[data-animation="album"][data-album-side="right"] .sliderx__album-leaf.is-incoming {
+  left: -14px;
+  background-position: left center;
+  transform-origin: right center;
+  transform: rotateY(90deg);
+}
+
+.sliderx[data-animation="album"][data-album-side="left"] .sliderx__album-static-current {
+  left: 50%;
+  background-position: right center;
+}
+
+.sliderx[data-animation="album"][data-album-side="left"] .sliderx__album-static-target {
+  left: 0;
+  background-position: left center;
+}
+
+.sliderx[data-animation="album"][data-album-side="left"] .sliderx__album-leaf.is-outgoing {
+  left: -14px;
+  background-position: left center;
+  transform-origin: right center;
+  transform: rotateY(0deg);
+}
+
+.sliderx[data-animation="album"][data-album-side="left"] .sliderx__album-leaf.is-incoming {
+  left: 50%;
+  background-position: right center;
+  transform-origin: left center;
+  transform: rotateY(-90deg);
+}
+
+.sliderx[data-animation="album"] .sliderx__content-stage > .sliderx__slide {
+  visibility: hidden;
+  opacity: 0;
+  transform: translate3d(0, 1rem, 0) scale3d(0.98, 0.98, 1);
+  transition:
+    opacity calc(var(--sliderx-animation-duration) * 0.2) ease,
+    transform calc(var(--sliderx-animation-duration) * 0.24) cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sliderx[data-animation="album"] .sliderx__content-stage > .sliderx__slide.is-active,
+.sliderx[data-animation="album"] .sliderx__content-stage > .sliderx__slide.is-entering,
+.sliderx[data-animation="album"] .sliderx__content-stage > .sliderx__slide.is-leaving {
+  visibility: visible;
+}
+
+.sliderx[data-animation="album"] .sliderx__content-stage > .sliderx__slide.is-active {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+}
+
+.sliderx[data-animation="album"] .sliderx__content-stage > .sliderx__slide.is-leaving {
+  z-index: 1;
+  opacity: 0;
+  transform: translate3d(0, -0.7rem, 0) scale3d(0.985, 0.985, 1);
+  pointer-events: none;
+}
+
+.sliderx[data-animation="album"] .sliderx__content-stage > .sliderx__slide.is-entering {
+  z-index: 2;
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+  pointer-events: none;
+}
+
+.sliderx[data-animation="album"] .sliderx__content-stage > .sliderx__slide.is-entering *,
+.sliderx[data-animation="album"] .sliderx__content-stage > .sliderx__slide.is-leaving * {
+  pointer-events: none;
+}
+
+.sliderx[data-animation="album"][data-album-content="hidden"] .sliderx__content-stage > .sliderx__slide.is-active,
+.sliderx[data-animation="album"][data-album-content="hidden"] .sliderx__content-stage > .sliderx__slide.is-entering {
+  opacity: 0 !important;
+  transform: translate3d(0, 1rem, 0) scale3d(0.98, 0.98, 1) !important;
+}
+
+.sliderx[data-animation="album"].is-animating .sliderx__bg-track > .sliderx__bg-panel {
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+.sliderx[data-animation="album"][data-album-phase="out"].is-animating .sliderx__album-static-target {
+  opacity: 1;
+  filter: brightness(1);
+}
+
+.sliderx[data-animation="album"][data-album-phase="out"].is-animating .sliderx__album-leaf.is-incoming {
+  opacity: 0;
+}
+
+.sliderx[data-animation="album"][data-album-phase="out"][data-album-side="right"].is-animating .sliderx__album-leaf.is-outgoing {
+  transform: rotateY(-90deg);
+}
+
+.sliderx[data-animation="album"][data-album-phase="out"][data-album-side="left"].is-animating .sliderx__album-leaf.is-outgoing {
+  transform: rotateY(90deg);
+}
+
+.sliderx[data-animation="album"][data-album-phase="in"].is-animating .sliderx__album-static-current {
+  opacity: 0;
+  filter: brightness(0.78);
+}
+
+.sliderx[data-animation="album"][data-album-phase="in"].is-animating .sliderx__album-static-target {
+  opacity: 1;
+  filter: brightness(1);
+}
+
+.sliderx[data-animation="album"][data-album-phase="in"].is-animating .sliderx__album-leaf.is-outgoing {
+  opacity: 0;
+}
+
+.sliderx[data-animation="album"][data-album-phase="in"].is-animating .sliderx__album-leaf.is-incoming {
+  opacity: 1;
+}
+
+.sliderx[data-animation="album"][data-album-phase="in"][data-album-side="right"].is-animating .sliderx__album-leaf.is-outgoing {
+  transform: rotateY(-90deg);
+}
+
+.sliderx[data-animation="album"][data-album-phase="in"][data-album-side="left"].is-animating .sliderx__album-leaf.is-outgoing {
+  transform: rotateY(90deg);
+}
+
+.sliderx[data-animation="album"][data-album-phase="in"][data-album-side="right"].is-animating .sliderx__album-leaf.is-incoming {
+  transform: rotateY(0deg);
+}
+
+.sliderx[data-animation="album"][data-album-phase="in"][data-album-side="left"].is-animating .sliderx__album-leaf.is-incoming {
+  transform: rotateY(0deg);
+}

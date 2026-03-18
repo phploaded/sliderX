@@ -1,0 +1,25 @@
+.sliderx[data-animation="slidex"] .sliderx__bg-base {
+  display: none;
+}
+
+.sliderx[data-animation="slidex"] .sliderx__bg-track,
+.sliderx[data-animation="slidex"] .sliderx__content-stage {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 100%;
+  will-change: transform;
+}
+
+.sliderx[data-animation="slidex"] .sliderx__slide {
+  position: relative;
+  inset: auto;
+  min-width: 0;
+  min-height: 100%;
+  visibility: visible;
+  opacity: 1;
+  pointer-events: none;
+}
+
+.sliderx[data-animation="slidex"] .sliderx__slide.is-active {
+  pointer-events: auto;
+}

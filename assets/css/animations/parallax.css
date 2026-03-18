@@ -1,0 +1,119 @@
+.sliderx[data-animation="parallax"] .sliderx__bg-base {
+  display: none;
+}
+
+.sliderx[data-animation="parallax"] .sliderx__bg-track,
+.sliderx[data-animation="parallax"] .sliderx__content-stage {
+  display: block;
+}
+
+.sliderx[data-animation="parallax"] .sliderx__bg-panel,
+.sliderx[data-animation="parallax"] .sliderx__slide {
+  transform-origin: center center;
+}
+
+.sliderx[data-animation="parallax"] .sliderx__bg-panel {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate3d(0, 0, 0) scale(1);
+  clip-path: inset(0 0 0 0);
+  filter: blur(0px);
+  will-change: transform, opacity, clip-path, filter;
+}
+
+.sliderx[data-animation="parallax"] .sliderx__slide {
+  opacity: 0;
+  visibility: hidden;
+  transform: translate3d(0, 0, 0) scale(1);
+  clip-path: inset(0 0 0 0);
+  filter: blur(0px);
+  will-change: transform, opacity, clip-path, filter;
+}
+
+.sliderx[data-animation="parallax"] .sliderx__bg-panel.is-active,
+.sliderx[data-animation="parallax"] .sliderx__slide.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.sliderx[data-animation="parallax"] .sliderx__bg-panel.is-entering,
+.sliderx[data-animation="parallax"] .sliderx__slide.is-entering,
+.sliderx[data-animation="parallax"] .sliderx__bg-panel.is-leaving,
+.sliderx[data-animation="parallax"] .sliderx__slide.is-leaving {
+  visibility: visible;
+}
+
+.sliderx[data-animation="parallax"] .sliderx__bg-panel.is-leaving,
+.sliderx[data-animation="parallax"] .sliderx__slide.is-leaving {
+  z-index: 2;
+}
+
+.sliderx[data-animation="parallax"] .sliderx__bg-panel.is-entering,
+.sliderx[data-animation="parallax"] .sliderx__slide.is-entering {
+  z-index: 1;
+}
+
+.sliderx[data-animation="parallax"].is-animating .sliderx__bg-panel.is-entering,
+.sliderx[data-animation="parallax"].is-animating .sliderx__slide.is-entering,
+.sliderx[data-animation="parallax"].is-animating .sliderx__bg-panel.is-leaving,
+.sliderx[data-animation="parallax"].is-animating .sliderx__slide.is-leaving {
+  transition:
+    transform var(--sliderx-animation-duration) cubic-bezier(0.22, 0.61, 0.36, 1),
+    opacity var(--sliderx-animation-duration) cubic-bezier(0.22, 0.61, 0.36, 1),
+    clip-path var(--sliderx-animation-duration) cubic-bezier(0.22, 0.61, 0.36, 1),
+    filter var(--sliderx-animation-duration) cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.sliderx[data-animation="parallax"] .sliderx__bg-panel.is-entering {
+  opacity: 0.55;
+  transform: translate3d(14%, 0, 0) scale(1.08);
+}
+
+.sliderx[data-animation="parallax"] .sliderx__slide.is-entering {
+  opacity: 0;
+  transform: translate3d(54px, 0, 0) scale(0.96);
+}
+
+.sliderx[data-animation="parallax"][data-animation-direction="prev"] .sliderx__bg-panel.is-entering {
+  transform: translate3d(-14%, 0, 0) scale(1.08);
+}
+
+.sliderx[data-animation="parallax"][data-animation-direction="prev"] .sliderx__slide.is-entering {
+  transform: translate3d(-54px, 0, 0) scale(0.96);
+}
+
+.sliderx[data-animation="parallax"] .sliderx__bg-panel.is-leaving,
+.sliderx[data-animation="parallax"] .sliderx__slide.is-leaving {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.sliderx[data-animation="parallax"].is-animating .sliderx__bg-panel.is-entering {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.sliderx[data-animation="parallax"].is-animating .sliderx__slide.is-entering {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.sliderx[data-animation="parallax"].is-animating .sliderx__bg-panel.is-leaving {
+  opacity: 0;
+  transform: translate3d(-10%, 0, 0) scale(1.02);
+}
+
+.sliderx[data-animation="parallax"].is-animating .sliderx__slide.is-leaving {
+  opacity: 0;
+  transform: translate3d(-34px, 0, 0) scale(1);
+}
+
+.sliderx[data-animation="parallax"][data-animation-direction="prev"].is-animating .sliderx__bg-panel.is-leaving {
+  transform: translate3d(10%, 0, 0) scale(1.02);
+}
+
+.sliderx[data-animation="parallax"][data-animation-direction="prev"].is-animating .sliderx__slide.is-leaving {
+  transform: translate3d(34px, 0, 0) scale(1);
+}

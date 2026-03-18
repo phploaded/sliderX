@@ -1,0 +1,189 @@
+.sliderx .sliderx__blast-stage {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.sliderx[data-animation="blast"] {
+  overflow: visible;
+}
+
+.sliderx[data-animation="blast"] .sliderx__bg-base {
+  display: none;
+}
+
+.sliderx[data-animation="blast"] .sliderx__bg-track,
+.sliderx[data-animation="blast"] .sliderx__content-stage {
+  display: block;
+}
+
+.sliderx[data-animation="blast"] .sliderx__bg-track > .sliderx__bg-panel {
+  position: absolute;
+  inset: 0;
+  background-image: var(--sliderx-panel-image, var(--sliderx-panel-bg));
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.sliderx[data-animation="blast"] .sliderx__bg-track > .sliderx__bg-panel,
+.sliderx[data-animation="blast"] .sliderx__content-stage > .sliderx__slide {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.sliderx[data-animation="blast"] .sliderx__bg-track > .sliderx__bg-panel.is-active,
+.sliderx[data-animation="blast"] .sliderx__content-stage > .sliderx__slide.is-active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.sliderx[data-animation="blast"].is-animating .sliderx__bg-track > .sliderx__bg-panel {
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+.sliderx[data-animation="blast"].is-animating .sliderx__bg-track > .sliderx__bg-panel.is-entering {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.sliderx[data-animation="blast"] .sliderx__blast-stage {
+  position: absolute;
+  display: block;
+  z-index: 1;
+  overflow: visible;
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.sliderx[data-animation="blast"] .sliderx__blast-frame {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.sliderx[data-animation="blast"].is-animating .sliderx__blast-stage {
+  visibility: visible;
+  opacity: 1;
+}
+
+.sliderx[data-animation="blast"] .sliderx__blast-blur,
+.sliderx[data-animation="blast"] .sliderx__blast-outgoing,
+.sliderx[data-animation="blast"] .sliderx__blast-incoming {
+  position: absolute;
+  inset: 0;
+}
+
+.sliderx[data-animation="blast"] .sliderx__blast-blur {
+  z-index: 1;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 0;
+  filter: blur(12px);
+  transform: scale3d(1, 1, 1);
+}
+
+.sliderx[data-animation="blast"] .sliderx__blast-incoming {
+  z-index: 2;
+}
+
+.sliderx[data-animation="blast"] .sliderx__blast-outgoing {
+  z-index: 2;
+  overflow: visible;
+}
+
+.sliderx[data-animation="blast"] .sliderx__blast-tile {
+  position: absolute;
+  overflow: hidden;
+  opacity: 1;
+  will-change: transform, opacity;
+}
+
+.sliderx[data-animation="blast"] .sliderx__blast-pane {
+  position: absolute;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.sliderx[data-animation="blast"] .sliderx__content-stage > .sliderx__slide.is-active,
+.sliderx[data-animation="blast"] .sliderx__content-stage > .sliderx__slide.is-entering,
+.sliderx[data-animation="blast"] .sliderx__content-stage > .sliderx__slide.is-leaving {
+  visibility: visible;
+}
+
+.sliderx[data-animation="blast"] .sliderx__content-stage > .sliderx__slide.is-entering,
+.sliderx[data-animation="blast"] .sliderx__content-stage > .sliderx__slide.is-leaving {
+  pointer-events: none;
+}
+
+.sliderx[data-animation="blast"] .sliderx__content-stage > .sliderx__slide.is-leaving {
+  z-index: 1;
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+}
+
+.sliderx[data-animation="blast"] .sliderx__content-stage > .sliderx__slide.is-entering {
+  z-index: 2;
+  opacity: 0;
+  transform: translate3d(0, 1.5rem, 0) scale3d(0.92, 0.92, 1);
+}
+
+.sliderx[data-animation="blast"] .sliderx__content-stage > .sliderx__slide.is-entering *,
+.sliderx[data-animation="blast"] .sliderx__content-stage > .sliderx__slide.is-leaving * {
+  pointer-events: none;
+}
+
+.sliderx[data-animation="blast"] .sliderx__blast-tile.is-outgoing {
+  transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+}
+
+.sliderx[data-animation="blast"] .sliderx__blast-tile.is-incoming {
+  opacity: 0;
+  transform: translate3d(var(--sliderx-blast-center-x, 0), var(--sliderx-blast-center-y, 0), 0) scale3d(0.001, 0.001, 1);
+}
+
+.sliderx[data-animation="blast"].is-animating .sliderx__blast-blur {
+  transition:
+    opacity calc(var(--sliderx-animation-duration) * 0.25) cubic-bezier(0.55, 0.055, 0.675, 0.19),
+    transform calc(var(--sliderx-animation-duration) * 0.25) cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  opacity: 0.38;
+  transform: scale3d(1.04, 1.04, 1);
+}
+
+.sliderx[data-animation="blast"].is-animating .sliderx__blast-tile.is-outgoing {
+  transition:
+    transform calc(var(--sliderx-animation-duration) * 0.3) cubic-bezier(0.95, 0.05, 0.795, 0.035) var(--sliderx-blast-delay, 0ms),
+    opacity calc(var(--sliderx-animation-duration) * 0.3) cubic-bezier(0.95, 0.05, 0.795, 0.035) var(--sliderx-blast-delay, 0ms);
+  opacity: 0;
+  transform: translate3d(var(--sliderx-blast-burst-x, 0), var(--sliderx-blast-burst-y, 0), 0) scale3d(5.6, 5.6, 1);
+}
+
+.sliderx[data-animation="blast"].is-animating .sliderx__blast-tile.is-incoming {
+  transition:
+    transform calc(var(--sliderx-animation-duration) * 0.3) cubic-bezier(0.175, 0.885, 0.32, 1.275) var(--sliderx-blast-delay, 0ms),
+    opacity calc(var(--sliderx-animation-duration) * 0.3) cubic-bezier(0.175, 0.885, 0.32, 1.275) var(--sliderx-blast-delay, 0ms);
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+}
+
+.sliderx[data-animation="blast"].is-animating .sliderx__content-stage > .sliderx__slide.is-leaving {
+  transition:
+    opacity calc(var(--sliderx-animation-duration) * 0.2) cubic-bezier(0.55, 0.055, 0.675, 0.19),
+    transform calc(var(--sliderx-animation-duration) * 0.2) cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  opacity: 0;
+  transform: translate3d(-1.1rem, -1.25rem, 0) scale3d(0.94, 0.94, 1);
+}
+
+.sliderx[data-animation="blast"].is-animating .sliderx__content-stage > .sliderx__slide.is-entering {
+  transition:
+    opacity calc(var(--sliderx-animation-duration) * 0.24) cubic-bezier(0.175, 0.885, 0.32, 1.275) calc(var(--sliderx-animation-duration) * 0.42),
+    transform calc(var(--sliderx-animation-duration) * 0.24) cubic-bezier(0.175, 0.885, 0.32, 1.275) calc(var(--sliderx-animation-duration) * 0.42);
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+}

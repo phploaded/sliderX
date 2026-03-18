@@ -1,0 +1,114 @@
+.sliderx .sliderx__swipe-stage {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.sliderx[data-animation="swipe"] .sliderx__bg-base {
+  display: none;
+}
+
+.sliderx[data-animation="swipe"] .sliderx__viewport {
+  perspective: 1200px;
+  perspective-origin: 50% 50%;
+  transform-style: preserve-3d;
+  overflow: hidden;
+}
+
+.sliderx[data-animation="swipe"] .sliderx__bg-track,
+.sliderx[data-animation="swipe"] .sliderx__content-stage {
+  display: block;
+}
+
+.sliderx[data-animation="swipe"] .sliderx__bg-track > .sliderx__bg-panel {
+  position: absolute;
+  inset: 0;
+  visibility: hidden;
+  opacity: 0;
+  background-image: var(--sliderx-panel-image, var(--sliderx-panel-bg));
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.sliderx[data-animation="swipe"] .sliderx__bg-track > .sliderx__bg-panel.is-active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.sliderx[data-animation="swipe"] .sliderx__content-stage > .sliderx__slide {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.sliderx[data-animation="swipe"] .sliderx__content-stage > .sliderx__slide.is-active {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.sliderx[data-animation="swipe"] .sliderx__swipe-stage {
+  position: absolute;
+  inset: 0;
+  display: block;
+  z-index: 5;
+  pointer-events: none;
+  overflow: hidden;
+  transform: scale3d(1.25, 1.25, 1);
+  transform-origin: 50% 50%;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.sliderx[data-animation="swipe"].is-animating .sliderx__swipe-stage {
+  visibility: visible;
+  opacity: 1;
+  animation: sliderx-swipe-stage-depth var(--sliderx-animation-duration) cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.sliderx[data-animation="swipe"] .sliderx__swipe-card {
+  position: absolute;
+  inset: 0;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  background-image: var(--sliderx-swipe-card-image);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-color: #000;
+  backface-visibility: hidden;
+  transform-origin: 50% 50%;
+  transform-style: preserve-3d;
+  outline: 1px solid transparent;
+  will-change: transform, opacity;
+}
+
+.sliderx[data-animation="swipe"] .sliderx__swipe-card > * {
+  pointer-events: none;
+}
+
+.sliderx[data-animation="swipe"].is-animating .sliderx__bg-track > .sliderx__bg-panel,
+.sliderx[data-animation="swipe"].is-animating .sliderx__content-stage > .sliderx__slide {
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+@keyframes sliderx-swipe-stage-depth {
+  0% {
+    transform: scale3d(1.25, 1.25, 1);
+  }
+
+  22% {
+    transform: scale3d(1, 1, 1);
+  }
+
+  78% {
+    transform: scale3d(1, 1, 1);
+  }
+
+  100% {
+    transform: scale3d(1.25, 1.25, 1);
+  }
+}

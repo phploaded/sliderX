@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>sliderX jQuery Slider Plugin</title>
+  <script>
+    window.sliderXAssetConfig = {
+      animations: {
+        instant: true,
+        slidex: true,
+        slidey: true,
+        slidez: true,
+        slidefade: true,
+        shift: true,
+        swipe: true,
+        lines: true,
+        circles: true,
+        collage: true,
+        hypno: true,
+        tiles: true,
+        thumbs: true,
+        album: true,
+        squares: true,
+        slices: true,
+        blast: true,
+        open: true,
+        curtains: true,
+        cubeover: true,
+        parallax: true,
+        revealx: true,
+        revealy: true
+      },
+      extraStyles: ["assets/css/demo.css"],
+      extraScripts: ["assets/js/demo.js"]
+    };
+  </script>
+  <script src="assets/js/sliderx.asset-loader.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/a11y-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+</head>
+<body>
+  <div class="body-ctr">
+    <div class="ctr">
+      <h1>Demo &amp; Documentation for jQuery plugin sliderX</h1>
+      <p>
+        sliderX is a jQuery slider plugin that keeps the image layer and HTML content separate,
+        so captions, buttons, navigation, and animation controls stay editable without changing the
+        slide markup itself.
+      </p>
+      <p>
+        This local page uses the same documentation-first layout as your alertX template, but only
+        for sliderX content. The live demo below updates the same slider instance in place and the
+        generated configuration block refreshes as you change each option.
+      </p>
+
+      <h2>Live Demo</h2>
+      <p>
+        Use the controls below to test animation mode, autoplay, button placement, indicator style,
+        and transition timing. The selector only shows animation files that were declared in
+        <code>window.sliderXAssetConfig</code>.
+      </p>
+
+      <div class="demo-summary">
+        <div><b>Indicators</b> <span class="js-summary-indicator">circles / framed</span></div>
+        <div><b>Bullets</b> <span class="js-summary-nav">inside</span></div>
+        <div><b>Buttons</b> <span class="js-summary-buttons">inside / center</span></div>
+        <div><b>Animation</b> <span class="js-summary-animation">cubeover</span></div>
+      </div>
+
+      <form class="demo-controls" id="demo-controls">
+        <label class="demo-field">
+          <span class="demo-field__label">Indicator Type</span>
+          <select name="indicatorType" aria-label="Indicator Type">
+            <option value="circles" selected>Circles</option>
+            <option value="pill">Pill</option>
+            <option value="squares">Squares</option>
+            <option value="underscores">Underscores</option>
+            <option value="none">None</option>
+          </select>
+        </label>
+
+        <label class="demo-field">
+          <span class="demo-field__label">Indicator Chrome</span>
+          <select name="indicatorChrome" aria-label="Indicator Chrome">
+            <option value="true" selected>On</option>
+            <option value="false">Off</option>
+          </select>
+        </label>
+
+        <label class="demo-field">
+          <span class="demo-field__label">Bullet Placement</span>
+          <select name="navInside" aria-label="Bullet Placement">
+            <option value="true" selected>Inside</option>
+            <option value="false">Outside</option>
+          </select>
+        </label>
+
+        <label class="demo-field">
+          <span class="demo-field__label">Button Placement</span>
+          <select name="buttonsInside" aria-label="Button Placement">
+            <option value="true" selected>Inside</option>
+            <option value="false">Outside</option>
+          </select>
+        </label>
+
+        <label class="demo-field">
+          <span class="demo-field__label">Button Position</span>
+          <select name="buttonsPosition" aria-label="Button Position">
+            <option value="top">Top</option>
+            <option value="center" selected>Center</option>
+            <option value="bottom">Bottom</option>
+          </select>
+        </label>
+
+        <label class="demo-field">
+          <span class="demo-field__label">Animation</span>
+          <select name="animation" aria-label="Animation"></select>
+        </label>
+
+        <label class="demo-field">
+          <span class="demo-field__label">Autoplay</span>
+          <select name="autoPlay" aria-label="Autoplay">
+            <option value="true" selected>On</option>
+            <option value="false">Off</option>
+          </select>
+        </label>
+
+        <label class="demo-field">
+          <span class="demo-field__label">Pause On Hover</span>
+          <select name="pauseOnHover" aria-label="Pause On Hover">
+            <option value="true" selected>On</option>
+            <option value="false">Off</option>
+          </select>
+        </label>
+
+        <label class="demo-field demo-field--range">
+          <span class="demo-field__row">
+            <span class="demo-field__label">Animation Duration</span>
+            <span class="demo-field__value" data-value-for="animationDuration">1000ms</span>
+          </span>
+          <input type="range" name="animationDuration" min="250" max="1600" step="50" value="1000" aria-label="Animation Duration">
+        </label>
+
+        <label class="demo-field demo-field--range">
+          <span class="demo-field__row">
+            <span class="demo-field__label">Autoplay Interval</span>
+            <span class="demo-field__value" data-value-for="interval">7000ms</span>
+          </span>
+          <input type="range" name="interval" min="2500" max="12000" step="500" value="7000" aria-label="Autoplay Interval">
+        </label>
+      </form>
+
+      <div class="demo-lab__actions">
+        <button class="demo-action" type="button" data-demo-action="reset">Reset Demo</button>
+        <button class="demo-action" type="button" data-demo-action="prev">Prev Slide</button>
+        <button class="demo-action" type="button" data-demo-action="next">Next Slide</button>
+        <button class="demo-action" type="button" data-demo-action="slide" data-slide-index="0">Slide 1</button>
+        <button class="demo-action" type="button" data-demo-action="slide" data-slide-index="3">Slide 4</button>
+      </div>
+
+      <section class="demo-slider-shell">
+        <section class="sliderx" id="sliderx-showcase" data-indicator-type="circles" aria-label="sliderX showcase slider">
+          <div class="sliderx__viewport">
+            <div class="sliderx__bg-stage">
+              <div class="sliderx__bg-base"></div>
+            </div>
+
+            <div class="sliderx__noise" aria-hidden="true"></div>
+
+            <div class="sliderx__content-stage">
+              <article
+                class="sliderx__slide"
+                data-bg="url('assets/images/01.jpg')"
+              >
+                <p class="sliderx__kicker">Plant Study</p>
+                <h2>Wild Plant with Ripening Fruits</h2>
+                <p class="sliderx__text">
+                  Clusters of small fruits shift from green to red on a wild plant.
+                  A simple glimpse of nature’s seasonal transformation.
+                </p>
+                <div class="sliderx__actions">
+                  <a class="sliderx__link is-primary" href="#">View Image</a>
+                  <a class="sliderx__link" href="#">Read Markup</a>
+                </div>
+              </article>
+
+              <article
+                class="sliderx__slide"
+                data-bg="url('assets/images/02.jpg')"
+              >
+                <p class="sliderx__kicker">Leaf Pattern</p>
+                <h2>Cannabis Sativa Leaves</h2>
+                <p class="sliderx__text">
+                  Sharp, serrated leaves spread in rich green layers.
+                  A bold and recognizable natural pattern.
+                </p>
+                <div class="sliderx__actions">
+                  <a class="sliderx__link is-primary" href="#">View Image</a>
+                  <a class="sliderx__link" href="#">Inspect Layers</a>
+                </div>
+              </article>
+
+              <article
+                class="sliderx__slide"
+                data-bg="url('assets/images/03.jpg')"
+              >
+                <p class="sliderx__kicker">Bloom Detail</p>
+                <h2>Golden Blossom Close-Up</h2>
+                <p class="sliderx__text">
+                  A soft yellow flower blooms with delicate detail.
+                  Bright tones stand out against muted foliage.
+                </p>
+                <div class="sliderx__actions">
+                  <a class="sliderx__link is-primary" href="#">View Image</a>
+                  <a class="sliderx__link" href="#">Review API</a>
+                </div>
+              </article>
+
+              <article
+                class="sliderx__slide"
+                data-bg="url('assets/images/04.jpg')"
+              >
+                <p class="sliderx__kicker">Pea Flower</p>
+                <h2>Pea Plant Flower in Bloom</h2>
+                <p class="sliderx__text">
+                  A pink and white flower emerges on a pea plant.
+                  A quiet moment before pods begin to form.
+                </p>
+                <div class="sliderx__actions">
+                  <a class="sliderx__link is-primary" href="#">View Image</a>
+                  <a class="sliderx__link" href="#">View Methods</a>
+                </div>
+              </article>
+
+              <article
+                class="sliderx__slide"
+                data-bg="url('assets/images/05.jpg')"
+              >
+                <p class="sliderx__kicker">Kitchen Prep</p>
+                <h2>Fresh Peppers and Sliced Onions</h2>
+                <p class="sliderx__text">
+                  Colorful bell peppers rest beside freshly cut onions.
+                  A vibrant scene from everyday kitchen prep.
+                </p>
+                <div class="sliderx__actions">
+                  <a class="sliderx__link is-primary" href="#">View Image</a>
+                  <a class="sliderx__link" href="#">Inspect Layers</a>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="sliderx__controls">
+            <button class="sliderx__button is-prev" type="button" aria-label="Previous slide">Prev</button>
+            <div class="sliderx__nav" aria-label="Slide navigation"></div>
+            <button class="sliderx__button is-next" type="button" aria-label="Next slide">Next</button>
+          </div>
+        </section>
+      </section>
+
+      <p>The configuration block below updates as you change the live controls:</p>
+      <pre><code class="js-demo-code language-javascript"></code></pre>
+
+      <h2>Quick Start</h2>
+      <p>
+        Declare the animation modules you want to ship, keep your slide markup simple, then initialize
+        the plugin once. The demo follows the same structure shown here.
+      </p>
+      <pre><code class="language-html">&lt;script&gt;
+window.sliderXAssetConfig = {
+  animations: {
+    instant: true,
+    swipe: true,
+    shift: true,
+    slidez: true
+  },
+  extraStyles: ["assets/css/demo.css"],
+  extraScripts: ["assets/js/demo.js"]
+};
+&lt;/script&gt;
+&lt;script src="assets/js/sliderx.asset-loader.js"&gt;&lt;/script&gt;</code></pre>
+      <pre><code class="language-javascript">$("#sliderx-showcase").sliderX({
+  indicatorType: "circles",
+  indicatorChrome: true,
+  navInside: true,
+  buttonsInside: true,
+  buttonsPosition: "center",
+  animation: "cubeover",
+  animationDuration: 1000,
+  autoPlay: true,
+  interval: 7000,
+  pauseOnHover: true
+});</code></pre>
+
+      <h2>Available Animations</h2>
+      <p>
+        The current local demo loads the following animation modules. Only these names are shown in the
+        animation selector and only these CSS / JS files are loaded by the asset loader.
+      </p>
+      <table class="tbl">
+        <thead>
+          <tr>
+            <th>animation</th>
+            <th>summary</th>
+            <th>files</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>instant</td><td>Immediate slide switch with no transition.</td><td>instant.css / instant.js</td></tr>
+          <tr><td>slidex</td><td>Horizontal strip movement across the slide row.</td><td>slidex.css / slidex.js</td></tr>
+          <tr><td>slidey</td><td>Vertical strip movement through stacked slides.</td><td>slidey.css / slidey.js</td></tr>
+          <tr><td>slidez</td><td>Zoom handoff between the current and target slides.</td><td>slidez.css / slidez.js</td></tr>
+          <tr><td>slidefade</td><td>Short directional move combined with a fade.</td><td>slidefade.css / slidefade.js</td></tr>
+          <tr><td>shift</td><td>Directional push with the current image shrinking away.</td><td>shift.css / shift.js</td></tr>
+          <tr><td>swipe</td><td>3D carousel basic transition with rotating side cards.</td><td>swipe.css / swipe.js</td></tr>
+          <tr><td>lines</td><td>Sampled color bars cover then reveal the next slide.</td><td>lines.css / lines.js</td></tr>
+          <tr><td>circles</td><td>Dribbles-style sampled circles flood then uncover the scene.</td><td>circles.css / circles.js</td></tr>
+          <tr><td>collage</td><td>Canvas-driven collage travel with blurred backdrop.</td><td>collage.css / collage.js</td></tr>
+          <tr><td>hypno</td><td>Bubbles-style concentric reveal built from sampled colors.</td><td>hypno.css / hypno.js</td></tr>
+          <tr><td>tiles</td><td>Brick-style 3D tile flip transition.</td><td>tiles.css / tiles.js</td></tr>
+          <tr><td>thumbs</td><td>Photo-deck collapse and expand transition.</td><td>thumbs.css / thumbs.js</td></tr>
+          <tr><td>album</td><td>Book-style half-page turn over the next image.</td><td>album.css / album.js</td></tr>
+          <tr><td>squares</td><td>Grid-based reveal through staggered tile patterns.</td><td>squares.css / squares.js</td></tr>
+          <tr><td>slices</td><td>Vertical slice variants with staggered strip timing.</td><td>slices.css / slices.js</td></tr>
+          <tr><td>blast</td><td>Overflow mosaic burst beyond the slider frame.</td><td>blast.css / blast.js</td></tr>
+          <tr><td>open</td><td>TURN-style hinge opening from rotating edges.</td><td>open.css / open.js</td></tr>
+          <tr><td>curtains</td><td>Louver-style vertical curtain flip.</td><td>curtains.css / curtains.js</td></tr>
+          <tr><td>cubeover</td><td>Cube-face rotation between slides.</td><td>cubeover.css / cubeover.js</td></tr>
+          <tr><td>parallax</td><td>Layered movement with faster content and slower background.</td><td>parallax.css / parallax.js</td></tr>
+          <tr><td>revealx</td><td>Horizontal wipe reveal.</td><td>revealx.css / revealx.js</td></tr>
+          <tr><td>revealy</td><td>Vertical wipe reveal.</td><td>revealy.css / revealy.js</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Available Options</h2>
+      <p>
+        The table below lists the runtime options supported by the plugin. These same keys can be used
+        in the initial constructor or passed again through <code>updateOptions</code>.
+      </p>
+      <table class="tbl">
+        <thead>
+          <tr>
+            <th>option</th>
+            <th>values</th>
+            <th>default</th>
+            <th>description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>startIndex</td><td>number</td><td>0</td><td>Initial active slide index before the slider is first rendered.</td></tr>
+          <tr><td>indicatorType</td><td>none, circles, squares, underscores, pill</td><td>circles</td><td>Chooses which indicator shape is rendered in the navigation area.</td></tr>
+          <tr><td>indicatorChrome</td><td>true, false</td><td>true</td><td>Toggles the framed background around inside indicators.</td></tr>
+          <tr><td>navInside</td><td>true, false</td><td>false</td><td>Places the indicator navigation inside or outside the viewport.</td></tr>
+          <tr><td>buttonsInside</td><td>true, false</td><td>false</td><td>Places the previous / next buttons inside or outside the viewport.</td></tr>
+          <tr><td>buttonsPosition</td><td>top, center, bottom</td><td>center</td><td>Controls the vertical position of inside previous / next buttons.</td></tr>
+          <tr><td>animation</td><td>any loaded animation name</td><td>instant</td><td>Sets the current transition mode. Only declared animation files can be used.</td></tr>
+          <tr><td>animationDuration</td><td>number in ms, minimum 250</td><td>820</td><td>Duration for animated transitions. Instant mode ignores it.</td></tr>
+          <tr><td>autoPlay</td><td>true, false</td><td>false</td><td>Automatically advances the slider after the configured interval.</td></tr>
+          <tr><td>interval</td><td>number in ms, minimum 2500</td><td>6500</td><td>Delay between autoplay advances.</td></tr>
+          <tr><td>pauseOnHover</td><td>true, false</td><td>true</td><td>Pauses autoplay while the slider is hovered.</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Methods</h2>
+      <p>
+        SliderX exposes a small set of direct runtime methods through the jQuery plugin instance.
+      </p>
+      <table class="tbl">
+        <thead>
+          <tr>
+            <th>method</th>
+            <th>arguments</th>
+            <th>description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>next</td><td>none</td><td>Moves to the next slide.</td></tr>
+          <tr><td>prev</td><td>none</td><td>Moves to the previous slide.</td></tr>
+          <tr><td>goTo</td><td>index, directionHint</td><td>Moves to a specific slide index and optionally forces next / prev direction.</td></tr>
+          <tr><td>setIndicatorType</td><td>indicatorType</td><td>Updates the active indicator style and rebuilds the navigation.</td></tr>
+          <tr><td>setIndicatorChrome</td><td>boolean</td><td>Toggles the inside navigation frame.</td></tr>
+          <tr><td>setNavInside</td><td>boolean</td><td>Moves the indicator navigation inside or outside the viewport.</td></tr>
+          <tr><td>setButtonsInside</td><td>boolean</td><td>Moves previous / next buttons inside or outside the viewport.</td></tr>
+          <tr><td>setButtonsPosition</td><td>top, center, bottom</td><td>Changes the vertical alignment of inside previous / next buttons.</td></tr>
+          <tr><td>setAnimation</td><td>animationName</td><td>Switches to a different loaded animation module.</td></tr>
+          <tr><td>setAnimationDuration</td><td>number in ms</td><td>Changes the transition duration at runtime.</td></tr>
+          <tr><td>updateOptions</td><td>options object</td><td>Applies multiple option changes at once and rerenders the slider.</td></tr>
+          <tr><td>destroy</td><td>none</td><td>Stops timers, unbinds events, and removes the stored plugin instance.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="text-center demo-footer">A product of <a href="http://phploaded.com">phploaded.com</a></div>
+    </div>
+  </div>
+</body>
+</html>

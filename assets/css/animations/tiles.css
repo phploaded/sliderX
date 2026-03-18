@@ -1,0 +1,148 @@
+.sliderx .sliderx__tiles-stage {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.sliderx[data-animation="tiles"] .sliderx__bg-base {
+  display: none;
+}
+
+.sliderx[data-animation="tiles"] .sliderx__viewport {
+  perspective: 2000px;
+  perspective-origin: 50% 50%;
+  overflow: visible;
+  transform-style: preserve-3d;
+}
+
+.sliderx[data-animation="tiles"].is-animating .sliderx__viewport {
+  background: #f4efe3;
+}
+
+.sliderx[data-animation="tiles"] .sliderx__bg-track,
+.sliderx[data-animation="tiles"] .sliderx__content-stage {
+  display: block;
+}
+
+.sliderx[data-animation="tiles"] .sliderx__bg-track > .sliderx__bg-panel {
+  position: absolute;
+  inset: 0;
+  visibility: hidden;
+  opacity: 0;
+  background-image: var(--sliderx-panel-image, var(--sliderx-panel-bg));
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.sliderx[data-animation="tiles"] .sliderx__bg-track > .sliderx__bg-panel.is-active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.sliderx[data-animation="tiles"] .sliderx__content-stage > .sliderx__slide {
+  visibility: hidden;
+  opacity: 0;
+  transform: translate3d(0, 1rem, 0) scale3d(0.98, 0.98, 1);
+}
+
+.sliderx[data-animation="tiles"] .sliderx__content-stage > .sliderx__slide.is-active,
+.sliderx[data-animation="tiles"] .sliderx__content-stage > .sliderx__slide.is-entering,
+.sliderx[data-animation="tiles"] .sliderx__content-stage > .sliderx__slide.is-leaving {
+  visibility: visible;
+}
+
+.sliderx[data-animation="tiles"] .sliderx__content-stage > .sliderx__slide.is-active {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+}
+
+.sliderx[data-animation="tiles"] .sliderx__content-stage > .sliderx__slide.is-entering,
+.sliderx[data-animation="tiles"] .sliderx__content-stage > .sliderx__slide.is-leaving {
+  pointer-events: none;
+}
+
+.sliderx[data-animation="tiles"] .sliderx__content-stage > .sliderx__slide.is-entering *,
+.sliderx[data-animation="tiles"] .sliderx__content-stage > .sliderx__slide.is-leaving * {
+  pointer-events: none;
+}
+
+.sliderx[data-animation="tiles"] .sliderx__tiles-stage {
+  position: absolute;
+  inset: 0;
+  display: block;
+  z-index: 3;
+  overflow: visible;
+  pointer-events: none;
+  transform-style: preserve-3d;
+}
+
+.sliderx[data-animation="tiles"].is-animating .sliderx__tiles-stage {
+  visibility: visible;
+  opacity: 1;
+}
+
+.sliderx[data-animation="tiles"] .sliderx__tile-wrapper {
+  position: absolute;
+  overflow: visible;
+  outline: 1px solid transparent;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.sliderx[data-animation="tiles"] .sliderx__tile-card {
+  position: absolute;
+  overflow: visible;
+  outline: 1px solid transparent;
+  transform-origin: 50% 50% 0;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.sliderx[data-animation="tiles"] .sliderx__tile-face,
+.sliderx[data-animation="tiles"] .sliderx__tile-edge {
+  position: absolute;
+  outline: 1px solid transparent;
+  backface-visibility: hidden;
+}
+
+.sliderx[data-animation="tiles"] .sliderx__tile-face {
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px rgba(14, 21, 31, 0.18);
+}
+
+.sliderx[data-animation="tiles"] .sliderx__tile-image {
+  position: absolute;
+  display: block;
+  max-width: none;
+  pointer-events: none;
+  user-select: none;
+}
+
+.sliderx[data-animation="tiles"] .sliderx__tile-edge {
+  opacity: 1;
+  box-shadow: inset 0 0 0 1px rgba(8, 12, 18, 0.16);
+}
+
+.sliderx[data-animation="tiles"].is-animating .sliderx__bg-track > .sliderx__bg-panel,
+.sliderx[data-animation="tiles"].is-animating .sliderx__content-stage > .sliderx__slide {
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+.sliderx[data-animation="tiles"][data-tiles-content="visible"].is-animating .sliderx__bg-track > .sliderx__bg-panel.is-entering,
+.sliderx[data-animation="tiles"][data-tiles-content="visible"].is-animating .sliderx__content-stage > .sliderx__slide.is-entering {
+  visibility: visible !important;
+}
+
+.sliderx[data-animation="tiles"][data-tiles-content="visible"].is-animating .sliderx__bg-track > .sliderx__bg-panel.is-entering {
+  opacity: 1 !important;
+}
+
+.sliderx[data-animation="tiles"][data-tiles-content="visible"].is-animating .sliderx__content-stage > .sliderx__slide.is-entering {
+  transition:
+    opacity calc(var(--sliderx-animation-duration) * 0.16) ease,
+    transform calc(var(--sliderx-animation-duration) * 0.16) cubic-bezier(0.22, 1, 0.36, 1);
+  opacity: 1 !important;
+  transform: translate3d(0, 0, 0) scale3d(1, 1, 1) !important;
+}

@@ -1,0 +1,159 @@
+.sliderx .sliderx__open-stage {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.sliderx[data-animation="open"] .sliderx__bg-base {
+  display: none;
+}
+
+.sliderx[data-animation="open"] .sliderx__viewport {
+  perspective: 500px;
+  transform-style: preserve-3d;
+  overflow: hidden;
+}
+
+.sliderx[data-animation="open"] .sliderx__viewport::after {
+  display: none;
+}
+
+.sliderx[data-animation="open"] .sliderx__bg-stage,
+.sliderx[data-animation="open"] .sliderx__bg-track,
+.sliderx[data-animation="open"] .sliderx__content-stage {
+  display: block;
+}
+
+.sliderx[data-animation="open"] .sliderx__bg-track > .sliderx__bg-panel {
+  position: absolute;
+  inset: 0;
+  visibility: hidden;
+  opacity: 0;
+  background-image: var(--sliderx-panel-image, var(--sliderx-panel-bg));
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.sliderx[data-animation="open"] .sliderx__bg-track > .sliderx__bg-panel.is-active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.sliderx[data-animation="open"] .sliderx__content-stage > .sliderx__slide {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.sliderx[data-animation="open"] .sliderx__content-stage > .sliderx__slide.is-active {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.sliderx[data-animation="open"] .sliderx__open-stage {
+  position: absolute;
+  inset: 0;
+  display: block;
+  z-index: 4;
+  overflow: hidden;
+  pointer-events: none;
+  transform-style: preserve-3d;
+}
+
+.sliderx[data-animation="open"].is-animating .sliderx__open-stage {
+  visibility: visible;
+  opacity: 1;
+}
+
+.sliderx[data-animation="open"] .sliderx__open-underlay,
+.sliderx[data-animation="open"] .sliderx__open-leaf {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  outline: 1px solid transparent;
+}
+
+.sliderx[data-animation="open"] .sliderx__open-underlay {
+  z-index: 4;
+  background: #000;
+}
+
+.sliderx[data-animation="open"] .sliderx__open-leaf {
+  z-index: 5;
+  transform: rotateX(0deg) rotateY(0deg) translate3d(0, 0, 0.1px);
+}
+
+.sliderx[data-animation="open"] .sliderx__open-card {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: none;
+  background-image: var(--sliderx-open-card-image);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.sliderx[data-animation="open"] .sliderx__open-underlay > .sliderx__open-card {
+  transition: opacity var(--sliderx-animation-duration) cubic-bezier(0.77, 0, 0.175, 1);
+  will-change: opacity;
+}
+
+.sliderx[data-animation="open"] .sliderx__open-leaf > .sliderx__open-card {
+  transform: translate3d(0, 0, 0.1px);
+}
+
+.sliderx[data-animation="open"][data-open-side="top"] .sliderx__viewport {
+  perspective-origin: 50% 0%;
+}
+
+.sliderx[data-animation="open"][data-open-side="right"] .sliderx__viewport {
+  perspective-origin: 100% 50%;
+}
+
+.sliderx[data-animation="open"][data-open-side="bottom"] .sliderx__viewport {
+  perspective-origin: 50% 100%;
+}
+
+.sliderx[data-animation="open"][data-open-side="left"] .sliderx__viewport {
+  perspective-origin: 0 50%;
+}
+
+.sliderx[data-animation="open"][data-open-side="top"] .sliderx__open-leaf {
+  transform-origin: 50% 0%;
+  transform: rotateX(-90deg) translate3d(0, 0, 0.1px);
+}
+
+.sliderx[data-animation="open"][data-open-side="right"] .sliderx__open-leaf {
+  transform-origin: 100% 50%;
+  transform: rotateY(-90deg) translate3d(0, 0, 0.1px);
+}
+
+.sliderx[data-animation="open"][data-open-side="bottom"] .sliderx__open-leaf {
+  transform-origin: 50% 100%;
+  transform: rotateX(90deg) translate3d(0, 0, 0.1px);
+}
+
+.sliderx[data-animation="open"][data-open-side="left"] .sliderx__open-leaf {
+  transform-origin: 0 50%;
+  transform: rotateY(90deg) translate3d(0, 0, 0.1px);
+}
+
+.sliderx[data-animation="open"].is-animating .sliderx__bg-track > .sliderx__bg-panel,
+.sliderx[data-animation="open"].is-animating .sliderx__content-stage > .sliderx__slide {
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.sliderx[data-animation="open"].is-animating .sliderx__open-underlay > .sliderx__open-card {
+  opacity: 0.2;
+}
+
+.sliderx[data-animation="open"].is-animating .sliderx__open-leaf {
+  transition: transform var(--sliderx-animation-duration) cubic-bezier(0.77, 0, 0.175, 1);
+  transform: rotateX(0deg) rotateY(0deg) translate3d(0, 0, 0);
+  will-change: transform;
+}

@@ -1,0 +1,141 @@
+.sliderx .sliderx__curtains-stage {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.sliderx[data-animation="curtains"] .sliderx__bg-base {
+  display: none;
+}
+
+.sliderx[data-animation="curtains"] .sliderx__bg-track,
+.sliderx[data-animation="curtains"] .sliderx__content-stage {
+  display: block;
+}
+
+.sliderx[data-animation="curtains"] .sliderx__bg-track > .sliderx__bg-panel {
+  position: absolute;
+  inset: 0;
+  background-image: var(--sliderx-panel-image, var(--sliderx-panel-bg));
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.sliderx[data-animation="curtains"] .sliderx__bg-track > .sliderx__bg-panel,
+.sliderx[data-animation="curtains"] .sliderx__content-stage > .sliderx__slide {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.sliderx[data-animation="curtains"] .sliderx__bg-track > .sliderx__bg-panel.is-active,
+.sliderx[data-animation="curtains"] .sliderx__content-stage > .sliderx__slide.is-active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.sliderx[data-animation="curtains"].is-animating .sliderx__bg-track > .sliderx__bg-panel,
+.sliderx[data-animation="curtains"].is-animating .sliderx__content-stage > .sliderx__slide {
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+.sliderx[data-animation="curtains"] .sliderx__curtains-stage {
+  position: absolute;
+  inset: 0;
+  display: block;
+  z-index: 3;
+  overflow: hidden;
+  pointer-events: none;
+  perspective: 1800px;
+  perspective-origin: 50% 50%;
+  transform-style: preserve-3d;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.sliderx[data-animation="curtains"].is-animating .sliderx__curtains-stage {
+  visibility: visible;
+  opacity: 1;
+}
+
+.sliderx[data-animation="curtains"] .sliderx__curtain-strip {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  overflow: visible;
+  contain: paint;
+}
+
+.sliderx[data-animation="curtains"] .sliderx__curtain-part {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.sliderx[data-animation="curtains"] .sliderx__curtain-face,
+.sliderx[data-animation="curtains"] .sliderx__curtain-edge {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  backface-visibility: hidden;
+  outline: 1px solid transparent;
+}
+
+.sliderx[data-animation="curtains"] .sliderx__curtain-face {
+  inset-inline: 0;
+  overflow: hidden;
+}
+
+.sliderx[data-animation="curtains"] .sliderx__curtain-face.is-front {
+  transform: translateZ(calc(var(--sliderx-curtain-depth, var(--sliderx-curtains-depth, 6px)) / 2));
+}
+
+.sliderx[data-animation="curtains"] .sliderx__curtain-face.is-back {
+  transform: rotateY(180deg) translateZ(calc(var(--sliderx-curtain-depth, var(--sliderx-curtains-depth, 6px)) / 2));
+}
+
+.sliderx[data-animation="curtains"] .sliderx__curtain-edge {
+  width: var(--sliderx-curtain-depth, var(--sliderx-curtains-depth, 6px));
+}
+
+.sliderx[data-animation="curtains"] .sliderx__curtain-edge.is-left {
+  left: 0;
+  transform-origin: left center;
+  transform: rotateY(-90deg);
+}
+
+.sliderx[data-animation="curtains"] .sliderx__curtain-edge.is-right {
+  right: 0;
+  transform-origin: right center;
+  transform: rotateY(90deg);
+}
+
+.sliderx[data-animation="curtains"] .sliderx__curtain-pane {
+  position: absolute;
+  top: 0;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.sliderx[data-animation="curtains"] .sliderx__curtain-pane > .sliderx__slide {
+  position: absolute;
+  inset: 0;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: none;
+  background: none;
+}
+
+.sliderx[data-animation="curtains"] .sliderx__curtain-pane > .sliderx__slide * {
+  pointer-events: none;
+}
+
+.sliderx[data-animation="curtains"].is-animating .sliderx__curtain-part {
+  transition:
+    transform calc(var(--sliderx-animation-duration) * 0.6) cubic-bezier(0.34, 1.56, 0.64, 1) var(--sliderx-curtain-delay, 0ms);
+  transform: rotateY(var(--sliderx-curtain-rotation, 180deg));
+}

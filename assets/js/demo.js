@@ -45,8 +45,8 @@ $(function () {
   };
 
   var defaults = {
-    indicatorType: "circles",
-    indicatorChrome: "true",
+    indicatorType: "underscores",
+    indicatorChrome: "false",
     navInside: "true",
     buttonsInside: "true",
     buttonsPosition: "center",
@@ -54,7 +54,7 @@ $(function () {
     animationDuration: "1000",
     autoPlay: "true",
     pauseOnHover: "true",
-    interval: "7000"
+    interval: "4000"
   };
 
   function toBoolean(value) {

@@ -42,7 +42,8 @@
 <body>
   <div class="body-ctr">
     <div class="ctr">
-      <h1>Demo &amp; Documentation for jQuery plugin sliderX</h1>
+      <h1>sliderX jQuery plugin</h1>
+      <h2>Demo &amp; Documentation v1.1</h2>
       <p>
         sliderX is a jQuery slider plugin that keeps the image layer and HTML content separate,
         so captions, buttons, navigation, and animation controls stay editable without changing the
@@ -61,21 +62,114 @@
         <code>window.sliderXAssetConfig</code>.
       </p>
 
-      <div class="demo-summary">
-        <div><b>Indicators</b> <span class="js-summary-indicator">circles / framed</span></div>
-        <div><b>Bullets</b> <span class="js-summary-nav">inside</span></div>
-        <div><b>Buttons</b> <span class="js-summary-buttons">inside / center</span></div>
-        <div><b>Animation</b> <span class="js-summary-animation">cubeover</span></div>
-      </div>
+      <section class="demo-slider-shell">
+        <section class="sliderx" id="sliderx-showcase" data-indicator-type="circles" aria-label="sliderX showcase slider">
+          <div class="sliderx__viewport">
+            <div class="sliderx__bg-stage">
+              <div class="sliderx__bg-base"></div>
+            </div>
+
+            <div class="sliderx__noise" aria-hidden="true"></div>
+
+            <div class="sliderx__content-stage">
+              <article
+                class="sliderx__slide"
+                data-bg="url('assets/images/01.jpg')"
+              >
+                <h2>Wild Plant with Ripening Fruits</h2>
+                <p class="sliderx__text">
+                  Clusters of small fruits shift from green to red on a wild plant.
+                  A simple glimpse of nature's seasonal transformation.
+                </p>
+                <div class="sliderx__actions">
+                  <a class="sliderx__link is-primary" href="#">View Image</a>
+                  <a class="sliderx__link" href="#">Read Markup</a>
+                </div>
+              </article>
+
+              <article
+                class="sliderx__slide"
+                data-bg="url('assets/images/02.jpg')"
+              >
+                <h2>Cannabis Sativa Leaves</h2>
+                <p class="sliderx__text">
+                  Sharp, serrated leaves spread in rich green layers.
+                  A bold and recognizable natural pattern.
+                </p>
+                <div class="sliderx__actions">
+                  <a class="sliderx__link is-primary" href="#">View Image</a>
+                  <a class="sliderx__link" href="#">Inspect Layers</a>
+                </div>
+              </article>
+
+              <article
+                class="sliderx__slide"
+                data-bg="url('assets/images/03.jpg')"
+              >
+                <h2>Golden Blossom Close-Up</h2>
+                <p class="sliderx__text">
+                  A soft yellow flower blooms with delicate detail.
+                  Bright tones stand out against muted foliage.
+                </p>
+                <div class="sliderx__actions">
+                  <a class="sliderx__link is-primary" href="#">View Image</a>
+                  <a class="sliderx__link" href="#">Review API</a>
+                </div>
+              </article>
+
+              <article
+                class="sliderx__slide"
+                data-bg="url('assets/images/04.jpg')"
+              >
+                <h2>Pea Plant Flower in Bloom</h2>
+                <p class="sliderx__text">
+                  A pink and white flower emerges on a pea plant.
+                  A quiet moment before pods begin to form.
+                </p>
+                <div class="sliderx__actions">
+                  <a class="sliderx__link is-primary" href="#">View Image</a>
+                  <a class="sliderx__link" href="#">View Methods</a>
+                </div>
+              </article>
+
+              <article
+                class="sliderx__slide"
+                data-bg="url('assets/images/05.jpg')"
+              >
+                <h2>Fresh Peppers and Sliced Onions</h2>
+                <p class="sliderx__text">
+                  Colorful bell peppers rest beside freshly cut onions.
+                  A vibrant scene from everyday kitchen prep.
+                </p>
+                <div class="sliderx__actions">
+                  <a class="sliderx__link is-primary" href="#">View Image</a>
+                  <a class="sliderx__link" href="#">Inspect Layers</a>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="sliderx__controls">
+            <button class="sliderx__button is-prev" type="button" aria-label="Previous slide">Prev</button>
+            <div class="sliderx__nav" aria-label="Slide navigation"></div>
+            <button class="sliderx__button is-next" type="button" aria-label="Next slide">Next</button>
+          </div>
+        </section>
+      </section>
 
       <form class="demo-controls" id="demo-controls">
         <label class="demo-field">
+          <span class="demo-field__label">Animation</span>
+          <select name="animation" aria-label="Animation"></select>
+        </label>
+
+        <label class="demo-field">
           <span class="demo-field__label">Indicator Type</span>
           <select name="indicatorType" aria-label="Indicator Type">
-            <option value="circles" selected>Circles</option>
+            <option value="underscores" selected>Underscores</option>
+            <option value="circles">Circles</option>
             <option value="pill">Pill</option>
             <option value="squares">Squares</option>
-            <option value="underscores">Underscores</option>
             <option value="none">None</option>
           </select>
         </label>
@@ -83,24 +177,24 @@
         <label class="demo-field">
           <span class="demo-field__label">Indicator Chrome</span>
           <select name="indicatorChrome" aria-label="Indicator Chrome">
-            <option value="true" selected>On</option>
-            <option value="false">Off</option>
+            <option value="false" selected>Off</option>
+            <option value="true">On</option>
           </select>
         </label>
 
         <label class="demo-field">
           <span class="demo-field__label">Bullet Placement</span>
           <select name="navInside" aria-label="Bullet Placement">
-            <option value="true" selected>Inside</option>
-            <option value="false">Outside</option>
+            <option value="true">Inside</option>
+            <option value="false" selected>Outside</option>
           </select>
         </label>
 
         <label class="demo-field">
           <span class="demo-field__label">Button Placement</span>
           <select name="buttonsInside" aria-label="Button Placement">
-            <option value="true" selected>Inside</option>
-            <option value="false">Outside</option>
+            <option value="true">Inside</option>
+            <option value="false" selected>Outside</option>
           </select>
         </label>
 
@@ -111,11 +205,6 @@
             <option value="center" selected>Center</option>
             <option value="bottom">Bottom</option>
           </select>
-        </label>
-
-        <label class="demo-field">
-          <span class="demo-field__label">Animation</span>
-          <select name="animation" aria-label="Animation"></select>
         </label>
 
         <label class="demo-field">
@@ -145,119 +234,11 @@
         <label class="demo-field demo-field--range">
           <span class="demo-field__row">
             <span class="demo-field__label">Autoplay Interval</span>
-            <span class="demo-field__value" data-value-for="interval">7000ms</span>
+            <span class="demo-field__value" data-value-for="interval">4000ms</span>
           </span>
-          <input type="range" name="interval" min="2500" max="12000" step="500" value="7000" aria-label="Autoplay Interval">
+          <input type="range" name="interval" min="2500" max="12000" step="500" value="4000" aria-label="Autoplay Interval">
         </label>
       </form>
-
-      <div class="demo-lab__actions">
-        <button class="demo-action" type="button" data-demo-action="reset">Reset Demo</button>
-        <button class="demo-action" type="button" data-demo-action="prev">Prev Slide</button>
-        <button class="demo-action" type="button" data-demo-action="next">Next Slide</button>
-        <button class="demo-action" type="button" data-demo-action="slide" data-slide-index="0">Slide 1</button>
-        <button class="demo-action" type="button" data-demo-action="slide" data-slide-index="3">Slide 4</button>
-      </div>
-
-      <section class="demo-slider-shell">
-        <section class="sliderx" id="sliderx-showcase" data-indicator-type="circles" aria-label="sliderX showcase slider">
-          <div class="sliderx__viewport">
-            <div class="sliderx__bg-stage">
-              <div class="sliderx__bg-base"></div>
-            </div>
-
-            <div class="sliderx__noise" aria-hidden="true"></div>
-
-            <div class="sliderx__content-stage">
-              <article
-                class="sliderx__slide"
-                data-bg="url('assets/images/01.jpg')"
-              >
-                <p class="sliderx__kicker">Plant Study</p>
-                <h2>Wild Plant with Ripening Fruits</h2>
-                <p class="sliderx__text">
-                  Clusters of small fruits shift from green to red on a wild plant.
-                  A simple glimpse of nature’s seasonal transformation.
-                </p>
-                <div class="sliderx__actions">
-                  <a class="sliderx__link is-primary" href="#">View Image</a>
-                  <a class="sliderx__link" href="#">Read Markup</a>
-                </div>
-              </article>
-
-              <article
-                class="sliderx__slide"
-                data-bg="url('assets/images/02.jpg')"
-              >
-                <p class="sliderx__kicker">Leaf Pattern</p>
-                <h2>Cannabis Sativa Leaves</h2>
-                <p class="sliderx__text">
-                  Sharp, serrated leaves spread in rich green layers.
-                  A bold and recognizable natural pattern.
-                </p>
-                <div class="sliderx__actions">
-                  <a class="sliderx__link is-primary" href="#">View Image</a>
-                  <a class="sliderx__link" href="#">Inspect Layers</a>
-                </div>
-              </article>
-
-              <article
-                class="sliderx__slide"
-                data-bg="url('assets/images/03.jpg')"
-              >
-                <p class="sliderx__kicker">Bloom Detail</p>
-                <h2>Golden Blossom Close-Up</h2>
-                <p class="sliderx__text">
-                  A soft yellow flower blooms with delicate detail.
-                  Bright tones stand out against muted foliage.
-                </p>
-                <div class="sliderx__actions">
-                  <a class="sliderx__link is-primary" href="#">View Image</a>
-                  <a class="sliderx__link" href="#">Review API</a>
-                </div>
-              </article>
-
-              <article
-                class="sliderx__slide"
-                data-bg="url('assets/images/04.jpg')"
-              >
-                <p class="sliderx__kicker">Pea Flower</p>
-                <h2>Pea Plant Flower in Bloom</h2>
-                <p class="sliderx__text">
-                  A pink and white flower emerges on a pea plant.
-                  A quiet moment before pods begin to form.
-                </p>
-                <div class="sliderx__actions">
-                  <a class="sliderx__link is-primary" href="#">View Image</a>
-                  <a class="sliderx__link" href="#">View Methods</a>
-                </div>
-              </article>
-
-              <article
-                class="sliderx__slide"
-                data-bg="url('assets/images/05.jpg')"
-              >
-                <p class="sliderx__kicker">Kitchen Prep</p>
-                <h2>Fresh Peppers and Sliced Onions</h2>
-                <p class="sliderx__text">
-                  Colorful bell peppers rest beside freshly cut onions.
-                  A vibrant scene from everyday kitchen prep.
-                </p>
-                <div class="sliderx__actions">
-                  <a class="sliderx__link is-primary" href="#">View Image</a>
-                  <a class="sliderx__link" href="#">Inspect Layers</a>
-                </div>
-              </article>
-            </div>
-          </div>
-
-          <div class="sliderx__controls">
-            <button class="sliderx__button is-prev" type="button" aria-label="Previous slide">Prev</button>
-            <div class="sliderx__nav" aria-label="Slide navigation"></div>
-            <button class="sliderx__button is-next" type="button" aria-label="Next slide">Next</button>
-          </div>
-        </section>
-      </section>
 
       <p>The configuration block below updates as you change the live controls:</p>
       <pre><code class="js-demo-code language-javascript"></code></pre>

@@ -47,6 +47,11 @@ h5 {
   border-bottom: 1px solid silver;
 }
 
+.ctr > h1 {
+  margin: 0;
+  border-bottom: 0;
+}
+
 p {
   margin: 20px 0;
   line-height: 1.75;
@@ -76,11 +81,14 @@ pre {
 }
 
 .ctr {
-  max-width: 1120px;
+  max-width: 960px;
+  padding: 40px;
+  box-sizing: border-box;
   margin: 0 auto;
-  padding: 35px;
-  background: #fff;
-  border: 1px solid silver;
+  background-color: #fff;
+  font: 12px verdana, tahoma, sans-serif;
+  color: #333;
+  box-shadow: 0 0 4px #000;
 }
 
 .demo-summary {
@@ -178,9 +186,24 @@ pre {
 }
 
 .demo-slider-shell {
-  margin: 20px -36px;
+  margin: 20px -40px;
   padding: 0;
   border: 0;
+  background: #ddd;
+}
+
+.demo-slider-shell .sliderx__text{
+	text-shadow:0 0 3px #000;
+}
+
+.demo-slider-shell .sliderx__slide h2 {
+  max-width: unset;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 48px;
+}
+
+.demo-slider-shell .sliderx__content-stage{
+background: rgba(0,0,0, 0.2);
 }
 
 .text-center {
@@ -224,7 +247,7 @@ pre {
 
 .sliderx__viewport {
   min-height: clamp(460px, 68vh, 680px);
-  border: 1px solid silver;
+  border: 0;
   background: #111;
 }
 
@@ -240,20 +263,6 @@ pre {
 .sliderx[data-button-placement="inside"] .sliderx__slide {
   padding-left: clamp(64px, 7vw, 88px);
   padding-right: clamp(64px, 7vw, 88px);
-}
-
-.sliderx__kicker {
-  padding: 6px 10px;
-  border: 1px solid rgba(255, 255, 255, 0.85);
-  background: rgba(255, 255, 255, 0.92);
-  color: #111;
-  letter-spacing: 0.12em;
-}
-
-.sliderx__kicker::before {
-  width: 8px;
-  height: 8px;
-  background: #666;
 }
 
 .sliderx__slide h2 {
@@ -286,6 +295,7 @@ pre {
   border: 1px solid rgba(255, 255, 255, 0.9);
   background: rgba(0, 0, 0, 0.35);
   color: #fff;
+  font-size:12px;
 }
 
 .sliderx__link:hover,
@@ -313,6 +323,20 @@ pre {
   border-radius: 0;
   border: 1px solid rgba(255, 255, 255, 0.24);
   background: rgba(8, 16, 28, 0.22);
+}
+
+.sliderx[data-button-placement="inside"] .sliderx__button {
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.sliderx[data-button-placement="inside"]:hover .sliderx__button,
+.sliderx[data-button-placement="inside"]:focus-within .sliderx__button {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 .sliderx__button::before {
